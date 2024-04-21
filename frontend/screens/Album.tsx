@@ -48,7 +48,7 @@ function Album(): React.JSX.Element {
             style = {
               styles.image
             }
-            source={{uri: `${pictures[i]}`}}
+            source={{uri: `${pictures[i]['url']}`}}
           />
         </View>
       );

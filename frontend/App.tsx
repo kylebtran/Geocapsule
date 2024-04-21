@@ -27,6 +27,7 @@ import Groups from './screens/Groups.tsx';
 import Profile from './screens/Profile.tsx';
 import Home from './screens/Home.tsx';
 import Prompts from './components/prompts.tsx';
+import TopFooter from './components/Wrapper.tsx'
 
 import {
   Colors,
@@ -111,6 +112,7 @@ function App(): React.JSX.Element {
             component={Profile}
         />
     </Tab.Navigator>
+
 </NavigationContainer>
 
   );

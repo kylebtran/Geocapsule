@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, SafeAreaView, ImageBackground, Dimensions, StatusBar } from 'react-native';
+import Prompts from '../components/prompts';
 
 const { width, height } = Dimensions.get('window');
 
