@@ -19,7 +19,7 @@ import {
   View,
 } from 'react-native';
 import { Camera, useCameraDevice, useCameraPermission } from 'react-native-vision-camera';
-import camera from './components/camera';
+import Cam from './screens/Cam.tsx';
 import Album from './screens/Album.tsx';
 import Prompts from './components/prompts.tsx';
 
@@ -71,7 +71,6 @@ function App(): React.JSX.Element {
     <View style = {{flex: 1}}>
       {/* <Album /> */}
       <Prompts />
-
     </View>
   );
 }
