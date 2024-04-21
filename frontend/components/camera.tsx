@@ -25,14 +25,27 @@ const camera = () => {
 
     var formData = new FormData();
     formData.append('files', {
-      name: "photo?.path",
+      name: 'photo?.jpg',
       uri: photo?.path,
-      type: "image/jpg"
+      type: 'image/jpeg'
     });
-    
-    fetch("https://localhost/upload", {
+
+    fetch('http://localhost:3000/upload', {
       method: 'POST',
-      body: formData
+      body: formData,
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    })
+    .then(response => {
+      if (response.ok) {
+        console.log('Uploaded successfully');
+      } else {
+        console.error('Error');
+      }
+    })
+    .catch(error => {
+      console.log(error);
     })
     console.log(photo);
 
