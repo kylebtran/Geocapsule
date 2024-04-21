@@ -20,6 +20,7 @@ import {
 } from 'react-native';
 import { Camera, useCameraDevice, useCameraPermission } from 'react-native-vision-camera';
 import camera from './components/camera';
+import Album from './screens/Album.tsx';
 
 import {
   Colors,
@@ -67,7 +68,7 @@ function App(): React.JSX.Element {
 
   return (
     <View style = {{flex: 1}}>
-      {camera()}
+      <Album />
     </View>
   );
 }

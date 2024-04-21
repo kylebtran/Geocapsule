@@ -21,7 +21,7 @@ async function getAllImageUrls(){
         for (const itemRef of res.items) {
             const url = await getDownloadURL(itemRef);
             imageUrls.push(url);
-            console.log(imageUrls);
+            
         }
 
         
@@ -29,7 +29,6 @@ async function getAllImageUrls(){
         console.log(error);
     }
 
-    console.log("All URLs retrieved:", imageUrls);
     return imageUrls;
 
 }
