@@ -26,13 +26,15 @@ const camera = () => {
 
 
     var formData = new FormData();
-    formData.append('files', {
+    formData.append('filename', {
       name: 'photo?.jpg',
       uri: "file://"+photo?.path,
       type: 'image/jpg'
     });
 
-    axios.post('127.0.0.1:3000/upload', formData)    
+    axios.post('https://2b0e-164-67-70-230.ngrok-free.app/upload', formData, {
+       headers: {"content-type": "multipart/form-data"}
+    })    
     .then(response => {
         console.log('Uploaded successfully');
     })
