@@ -14,8 +14,6 @@ import {
   Linking
 } from 'react-native';
 
-import img1 from '../assets/test.png';
-import img2 from '../assets/test2.png';
 
 function Album(): React.JSX.Element {
 
@@ -23,9 +21,8 @@ function Album(): React.JSX.Element {
     backgroundColor: '#0A0B0D',
   };
 
-  // declare dataz
+  // declare data
   const [pictures, setPictures] = useState([]);
-  let maybe = true;
   useEffect(() => {
     fetchData();
   }, [])
@@ -39,26 +36,35 @@ function Album(): React.JSX.Element {
     }
   }
 
-  //const imgSrc = [];
+  const imageGrid = () => {
 
-  // const imageGrid = () => {
-  //   fetchData();
+    const images = [];
+    const ex = "Hello";
 
-  //   const images = [];
-  //   const ex = "Hello";
-  //   for (let i = 0; i < pictures.length; i++) {
-  //     images.push(<Text onPress={() => Linking.openURL(pictures[i])}>{ex}</Text>);
-  //   }
-  //   return images;
-  // }
+    for (let i = 0; i < pictures.length; i++) {
+      images.push(
+        <View key={i} style={styles.imageContainer}>
+          <Image
+            style = {
+              styles.image
+            }
+            source={{uri: `${pictures[i]}`}}
+          />
+        </View>
+      );
+      console.log(i);
+    }
+    return images;
+  }
 
-      //const imgEach = imgSrc[i % imgSrc.length];
+  // const imgEach = imgSrc[i % imgSrc.length];
 
-  
-        // <View key={i} style={styles.imageContainer}>
-        //   <Image source={imgEach} style={styles.image} />
-        // </View>
 
+  //   <View key={i} style={styles.imageContainer}>
+  //     <Image source={imgEach} style={styles.image} />
+  //   </View>
+
+ 
   return (
     <SafeAreaView style={backgroundStyle}>
       <StatusBar
@@ -69,10 +75,12 @@ function Album(): React.JSX.Element {
         style={backgroundStyle}
         overScrollMode="never">
         <View style={styles.galleryContainer}>
-          <Text>DONE</Text>
+          {imageGrid()}
         </View>
+        <Pressable onPress={fetchData} 
+        style={{position: 'absolute', bottom: 50, width: 1, height: 1, backgroundColor: 'white', alignSelf: 'center', borderRadius: 75}} />
       </ScrollView>
-      <Pressable onPress={fetchData} />
+      
     </SafeAreaView>
 
     
