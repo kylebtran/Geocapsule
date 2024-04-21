@@ -1,5 +1,6 @@
 import React, { Component, useRef } from 'react';
 import { Camera, useCameraDevice, useCameraPermission } from 'react-native-vision-camera';
+import axios from 'axios';
 import {
   ActivityIndicator,
   Pressable,
@@ -23,30 +24,28 @@ const camera = () => {
     const photo = await cameraObject.current?.takePhoto();
     // const result = await fetch('file://${photo.path}');
 
+
     var formData = new FormData();
     formData.append('files', {
       name: 'photo?.jpg',
-      uri: photo?.path,
-      type: 'image/jpeg'
+      uri: "file://"+photo?.path,
+      type: 'image/jpg'
     });
 
-    fetch('http://localhost:3000/upload', {
-      method: 'POST',
-      body: formData,
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-    })
+    axios.post('127.0.0.1:3000/upload', formData)    
     .then(response => {
-      if (response.ok) {
         console.log('Uploaded successfully');
-      } else {
-        console.error('Error');
-      }
     })
     .catch(error => {
       console.log(error);
     })
+
+
+    // fetch('http://10.0.2.2:3000/upload', {
+    //   method: 'POST',
+    //   body: formData
+    // })
+
     console.log(photo);
 
   }

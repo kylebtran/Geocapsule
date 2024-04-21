@@ -8,6 +8,11 @@ import cors from 'cors';
 import bodyParser from "body-parser";
 const app = express()
 
+// app.use(cors({
+//     origin: 'http://localhost:3000/upload',
+//     methods: ['GET', 'POST']
+// }));
+
 // Parse the request from the client into json
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
