@@ -8,6 +8,8 @@
 import React, { useRef } from 'react';
 import type {PropsWithChildren} from 'react';
 import {
+  ActivityIndicator,
+  Pressable,
   SafeAreaView,
   ScrollView,
   StatusBar,
@@ -17,6 +19,7 @@ import {
   View,
 } from 'react-native';
 import { Camera, useCameraDevice, useCameraPermission } from 'react-native-vision-camera';
+import camera from './components/camera';
 
 import {
   Colors,
@@ -63,28 +66,10 @@ function App(): React.JSX.Element {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
-  const { hasPermission, requestPermission } = useCameraPermission()
-
-  requestPermission()
-
-  const device = useCameraDevice('back');
-
-  const camera = useRef<Camera>(null)
-
-
-  if(device == null) {
-    return (<Text>Camera not found</Text>)
-  }
-  
   return (
-      // <Text>Hello World!!!</Text>
-      <Camera
-        ref={camera}
-        style={StyleSheet.absoluteFill}
-        device={device}
-        isActive={true}
-        photo={true}
-      />
+    <View style = {{flex: 1}}>
+      {camera()}
+    </View>
   );
 }
 
