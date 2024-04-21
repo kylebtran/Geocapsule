@@ -20,16 +20,32 @@ async function getAllImageUrls(){
 
         for (const itemRef of res.items) {
             const url = await getDownloadURL(itemRef);
-            imageUrls.push(url);
             
+            let path = itemRef._location.path_;
+            
+            path = path.split(" ");
+            const date = path[9];
+            const time = path[10];
+            imageUrls.push({
+                time: `${date} ${time}`,
+                url: url
+            });      
         }
+        
+        // Sort the Image urls based on time.
+        imageUrls.sort((a, b) => {
+            const dateA = new Date(a.time);
+            const dateB = new Date(b.time);
+
+            return dateA - dateB;
+        });
+
+        return imageUrls;
 
         
     }  catch (error) {
         console.log(error);
     }
-
-    return imageUrls;
 
 }
 
