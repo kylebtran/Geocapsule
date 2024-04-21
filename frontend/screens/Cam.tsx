@@ -13,14 +13,13 @@ import {
   View,
 } from 'react-native';
 
-const camera = () => {
+const Cam = () => {
     
   const cameraObject = useRef<Camera>(null)
 
 
 
   const capturePhoto = async () => {
-    console.warn('Hello World');
     const photo = await cameraObject.current?.takePhoto();
     // const result = await fetch('file://${photo.path}');
 
@@ -78,4 +77,4 @@ const camera = () => {
     </View>
   );
 }
-export default camera;
+export default Cam;

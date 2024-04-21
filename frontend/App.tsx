@@ -79,18 +79,36 @@ function App(): React.JSX.Element {
     //   <Cam />
     // </View>
     <NavigationContainer>
-    <Tab.Navigator initialRouteName="Home">
+    <Tab.Navigator 
+    initialRouteName="Home"
+    screenOptions={{
+      tabBarShowLabel: false,
+      headerShown: false,
+    }}
+    tabBarOptions={{
+      showLabel: false,
+      headerShown: false, // This will hide the labels of the tabs
+     // This will remove the top border>
+    }}>
         <Tab.Screen
             name="Home"
             component={Home}
         />
         <Tab.Screen
-            name="About"
-            component={Album}
+            name="Groups"
+            component={Groups}
         />
         <Tab.Screen
             name="Cam"
             component={Cam}
+        />
+        <Tab.Screen
+            name="Album"
+            component={Album}
+        />
+        <Tab.Screen
+            name="Profile"
+            component={Profile}
         />
     </Tab.Navigator>
 </NavigationContainer>
