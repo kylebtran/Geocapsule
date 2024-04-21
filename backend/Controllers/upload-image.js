@@ -39,7 +39,6 @@ router.post("/", upload.single("filename"), async(req, res) => {
         // get the public url
         const downloadURL = await getDownloadURL(snapshot.ref);
 
-        console.log('File successfully uploaded');
 
         return res.send({
             message: 'file uploaded to firebase storage',
@@ -53,8 +52,6 @@ router.post("/", upload.single("filename"), async(req, res) => {
     }
 
 });
-
-
 
 const giveCurrentDateTime = () => {
     const today = new Date();

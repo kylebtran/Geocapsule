@@ -1,6 +1,7 @@
 import express, { Router } from "express";
 import uploadRouter from "./Controllers/upload-image.js"
 import promptRouter from "./Controllers/getting-prompts.js";
+import getAllImageUrls from "./Controllers/getting-images.js"
 //import { initializeApp } from "firebase/app";
 
 import bodyParser from "body-parser";
@@ -26,15 +27,17 @@ app.use('/upload', uploadRouter);
             -> generic
             -> specific
 */
-
 app.use('/prompt', promptRouter);
 
 // Get all the images from the database. 
-app.get('/pictures', (req, res) => {
-    
-})
+app.get('/pictures', async (req, res) => {
 
-
+    const imageUrls = await getAllImageUrls();
+    res.send({
+        message: "Successfully got all the images",
+        urls: imageUrls
+    })
+});
 
 
 const port = 3000 || process.env.port;
