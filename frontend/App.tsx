@@ -21,9 +21,7 @@ import {
 import { Camera, useCameraDevice, useCameraPermission } from 'react-native-vision-camera';
 import Cam from './screens/Cam.tsx';
 import Album from './screens/Album.tsx';
-import Home from './screens/Home.tsx';
-import Groups from './screens/Groups.tsx';
-import Profile from './screens/Profile.tsx';
+import Prompts from './components/prompts.tsx';
 
 import {
   Colors,
@@ -71,7 +69,8 @@ function App(): React.JSX.Element {
 
   return (
     <View style = {{flex: 1}}>
-      <Groups />
+      {/* <Album /> */}
+      <Prompts />
     </View>
   );
 }

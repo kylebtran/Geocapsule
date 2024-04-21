@@ -22,10 +22,11 @@ async function run() {
 router.get('/', async(req, res) => {
 
     const text = await run();
+    const a = text.split('\n');
 
     return res.send({
         message: 'Fetched AI prompts successfully',
-        prompts: text
+        prompts: a
     })
 })
 
