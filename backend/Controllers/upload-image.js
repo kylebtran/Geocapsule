@@ -24,7 +24,6 @@ const upload = multer({ storage : multer.memoryStorage() });
 router.post("/", upload.single("filename"), async(req, res) => {
     try {
         const dateTime = giveCurrentDateTime();
-        
         let location = "UCLA";
         const storageRef = ref(storage, `files/${location+"/"+req.file.originalname + "         " + dateTime}`);
 
