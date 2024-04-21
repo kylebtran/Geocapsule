@@ -112,7 +112,7 @@ function App(): React.JSX.Element {
             component={Profile}
         />
     </Tab.Navigator>
-
+<TopFooter />
 </NavigationContainer>
 
   );
