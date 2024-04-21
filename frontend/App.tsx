@@ -7,6 +7,8 @@
 
 import React, { useRef } from 'react';
 import type {PropsWithChildren} from 'react';
+import {NavigationContainer} from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {
   ActivityIndicator,
   Pressable,
@@ -21,6 +23,9 @@ import {
 import { Camera, useCameraDevice, useCameraPermission } from 'react-native-vision-camera';
 import Cam from './screens/Cam.tsx';
 import Album from './screens/Album.tsx';
+import Groups from './screens/Groups.tsx';
+import Profile from './screens/Profile.tsx';
+import Home from './screens/Home.tsx';
 import Prompts from './components/prompts.tsx';
 
 import {
@@ -60,18 +65,36 @@ function Section({children, title}: SectionProps): React.JSX.Element {
   );
 }
 
+const Tab = createBottomTabNavigator();
+
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
-
   const backgroundStyle = {
     backgroundColor: Colors.brown,
   };
 
   return (
-    <View style = {{flex: 1}}>
-      {/* <Album /> */}
-      <Prompts />
-    </View>
+    // <View style = {{flex: 1}}>
+    //   {/* <Album /> */}
+    //   <Cam />
+    // </View>
+    <NavigationContainer>
+    <Tab.Navigator initialRouteName="Home">
+        <Tab.Screen
+            name="Home"
+            component={Home}
+        />
+        <Tab.Screen
+            name="About"
+            component={Album}
+        />
+        <Tab.Screen
+            name="Cam"
+            component={Cam}
+        />
+    </Tab.Navigator>
+</NavigationContainer>
+
   );
 }
 
