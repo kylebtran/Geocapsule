@@ -7,7 +7,7 @@ const TopFooter = () => {
   return (
     <View style={{
       position: 'absolute',
-      bottom: -120,
+      bottom: -140,
       width: width,
       justifyContent: 'flex-end', // Align content at the bottom
       alignItems: 'center',
